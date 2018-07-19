@@ -5,6 +5,6 @@ const TradingTableSaveSchema = new mongoose.Schema({
     prices: {type: Array, required: true}
 });
 
-const TradingTableSave = mongoose.model('TradingTableSave', TradingTableSaveSchema, 'tradingTableSaves');
+const TradingTableSave = mongoose.model('TradingTableSave', TradingTableSaveSchema, 'saves');
 
 module.exports = TradingTableSave;

@@ -5,6 +5,6 @@ const TradingTablePresetSchema = new mongoose.Schema({
     products: {type: Array, required: true},
 });
 
-const TradingTablePreset = mongoose.model('TradingTablePreset', TradingTablePresetSchema, 'tradingTablePresets');
+const TradingTablePreset = mongoose.model('TradingTablePreset', TradingTablePresetSchema, 'presets');
 
 module.exports = TradingTablePreset;
