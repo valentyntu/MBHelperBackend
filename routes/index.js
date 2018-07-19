@@ -17,8 +17,14 @@ router.post('/saves', function (req, res) {
 });
 
 router.get('/presets', function (req, res) {
-    TradingTablePreset.find()
+    TradingTablePreset.find({})
         .then(presets => res.json(presets))
+        .catch(err => res.status(500).json({error: err}))
+});
+
+router.post('/presets', function (req, res) {
+    TradingTablePreset.create(req.body)
+        .then(preset => res.json(preset))
         .catch(err => res.status(500).json({error: err}))
 });
 
