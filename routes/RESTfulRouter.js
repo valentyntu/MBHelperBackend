@@ -4,7 +4,7 @@ function RESTfulRouter(controller) {
     const router = express.Router();
 
     router.get('/', function (req, res) {
-        controller.find()
+        controller.find(req.query ? req.query : null)
             .then(models => res.json(models))
             .catch(err => res.status(500).json({error: err}))
     });

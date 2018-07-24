@@ -4,14 +4,10 @@ const router = require("./routes/index");
 const mongoose = require("mongoose");
 const cors = require("./corsConfig");
 
-const DB_URL = "mongodb://localhost/local";
-mongoose.connect(DB_URL, function (err) {
-    if (err) {
-        console.error("Mongo connection FAIL: "+ err);
-    } else {
-        console.log("Mongo connection OK");
-    }
-});
+const DB_URL = "mongodb://localhost:27017/local";
+mongoose.connect(DB_URL, {useNewUrlParser: true})
+    .then(() => console.log("Mongo connection OK"))
+    .catch(err => console.error("Mongo connection FAIL: " + err));
 
 app.use(cors);
 app.use(express.json());

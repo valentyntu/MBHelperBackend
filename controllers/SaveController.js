@@ -1,24 +1,26 @@
-const Guest = require("../models/TradingTableSave");
+const TradingTableSave = require("../models/TradingTableSave");
 
 class SaveController {
-    find() {
-        return Guest.find();
+    find(params) {
+        if (params) {
+            return TradingTableSave.find(params);
+        } else return TradingTableSave.find();
     }
 
     create(guest) {
-        return Guest.create(guest);
+        return TradingTableSave.create(guest);
     }
 
     findById(id) {
-        return Guest.findById(id);
+        return TradingTableSave.findById(id);
     }
 
     removeById(id) {
-        return Guest.findByIdAndRemove(id);
+        return TradingTableSave.findByIdAndRemove(id);
     }
 
     updateById(id, guest) {
-        return Guest.findByIdAndUpdate(id, guest, {new: true});
+        return TradingTableSave.findByIdAndUpdate(id, guest, {new: true});
     }
 }
 

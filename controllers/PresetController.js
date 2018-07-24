@@ -1,24 +1,26 @@
-const Guest = require("../models/TradingTablePreset");
+const TradingTablePreset = require("../models/TradingTablePreset");
 
 class PresetController {
-    find() {
-        return Guest.find();
+    find(params) {
+        if (params) {
+            return TradingTablePreset.find(params);
+        } else return TradingTablePreset.find();
     }
 
     create(guest) {
-        return Guest.create(guest);
+        return TradingTablePreset.create(guest);
     }
 
     findById(id) {
-        return Guest.findById(id);
+        return TradingTablePreset.findById(id);
     }
 
     removeById(id) {
-        return Guest.findByIdAndRemove(id);
+        return TradingTablePreset.findByIdAndRemove(id);
     }
 
     updateById(id, guest) {
-        return Guest.findByIdAndUpdate(id, guest, {new: true});
+        return TradingTablePreset.findByIdAndUpdate(id, guest, {new: true});
     }
 }
 
