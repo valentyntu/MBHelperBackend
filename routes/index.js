@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const restfulRouter = require("./RESTfulRouter");
 
-const controllers = require("../controllers");
+const savesRouter = require("./SavesRouter");
+const presetsAdminRouter = require("./PresetsAdminRouter");
+const presetsPublicRouter = require("./PresetsPublicRouter");
 
-for (let path in controllers) {
-    router.use(`/${path}`, restfulRouter(controllers[path]));
-}
+router.use("/presets", presetsPublicRouter);
+router.use("/saves",  savesRouter);
+
+// router.use("/presets", presetsAdminRouter);
 
 module.exports = router;
