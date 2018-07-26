@@ -7,7 +7,9 @@ const TradingTableSaveSchema = new mongoose.Schema({
         buy: Number,
         sell: Number
     }],
-    sub: {type: String}
+    sub: {type: String},
+    createdAt: {type: Date, default: Date.now},
+    name: {type: String}
 });
 
 const TradingTableSave = mongoose.model('TradingTableSave', TradingTableSaveSchema, 'saves');
