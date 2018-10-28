@@ -12,7 +12,7 @@ router.post("/", function (req, res) {
 
 router.delete("/:id", function (req, res) {
     Preset.removeById(req.params.id)
-        .then(p => res.status(204).json('OK'))
+        .then(() => res.sendStatus(204))
         .catch(err => res.status(500).json({error: err}))
 });
 

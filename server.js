@@ -1,7 +1,2 @@
-const app = require("./app");
-
-const PORT = 4000;
-
-app.listen(PORT, function () {
-    console.log("Server started on port " + PORT);
-});
+require('babel-core/register');
+exports = module.exports = require('./app');

@@ -1,16 +1,38 @@
-const express = require('express');
-const app = express();
-const router = require("./routes");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import http from "http";
 
-const DB_URL = "mongodb://admin:admin2018@ds020168.mlab.com:20168/mb_helper";
-mongoose.connect(DB_URL, {useNewUrlParser: true})
-    .then(() => console.log("Mongo connection OK"))
-    .catch(err => console.error("Mongo connection FAIL: " + err));
+import express from "./express";
+import api from "./api";
 
-app.use(cors());
-app.use(express.json());
-app.use(router);
+const app = express(api);
+const server = http.createServer(app);
 
-module.exports = app;
+const port = normalizePort(process.env.PORT || "5000");
+
+setImmediate(() => {
+  if (port) {
+    server.listen(port, () => {
+      console.log("Express server listening on port %s", port);
+    });
+  } else {
+    console.error("Port from environment is not valid");
+    process.exit(1);
+  }
+});
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+export default app;

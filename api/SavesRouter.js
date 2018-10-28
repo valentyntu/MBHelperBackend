@@ -18,7 +18,7 @@ router.post('/', requireAuth, function (req, res) {
 
 router.delete("/:id", requireAuth, function (req, res) {
     Save.findByIdAndRemove(req.params.id)
-        .then(m => res.status(204).json(m))
+        .then(() => res.sendStatus(204))
         .catch(err => res.status(500).json({error: err}))
 });
 
